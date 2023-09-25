@@ -5,6 +5,7 @@
     <title>Workshop 3</title>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
+
   <body class="ws3">
     <h1>Workshop 3: JavaScript Events</h1>
     <hr />
@@ -50,7 +51,7 @@
       </li>
     </ol>
     <hr />
-    <h2>Exercise 2</h2>
+    <h2 id="ex2">Exercise 2</h2>
     <ul>
       <li>
         Add an&nbsp;onMouseOver event on the&nbsp;Heading "Exercise 2" of this
@@ -92,7 +93,7 @@
       <button>Send me</button>
     </form>
     <hr />
-    <h2>Exercise 4</h2>
+    <h2 id="coords">Exercise 4</h2>
     <div id="coordinates"></div>
     <p>
       Add onMouseMove -event to the DIV-element above. When you move mouse over
@@ -118,13 +119,12 @@
       let vv = new Date().getFullYear();
       let pvm = pp + "." + (kk + 1) + "." + vv;
 
-      // 1.1: Lisätään kuuntelija, joka aktivoituu eventin kohdalla
+      // 1.1: Lisätään kuuntelija, joka aktivoituu eventin kohdalla. 1.1 siis nappia klikataan, niin alert tulee. 1.2 lisätty tulostamaan myös pvm-muuttuja.
       nappi1.addEventListener("click", function () {
         alert("You clicked me! Today is " + pvm);
       });
 
-      // Tehtävä 1.3: Luodaan funktio, joka kirjoittaa html-taulukon. Haetaan viite toiseen nappiin. Lisätään kuuntelija.
-
+      // Tehtävä 1.3: Luodaan funktio, joka kirjoittaa html-taulukon. Haetaan viite toiseen nappiin. Lisätään kuuntelija. ` -merkki antaa kirjottaa koodia useammalle riville.
       function showTable() {
         let taulukko1 = `<table id="example" class="display">
         <thead>
@@ -166,7 +166,77 @@
       }
 
       let nappi2 = document.getElementsByTagName("button")[1];
-      nappi2.addEventListener('click', function(){showTable()})
+      nappi2.addEventListener("click", function () {
+        showTable();
+      });
+
+      // Tehtävä 1.4: haetaan viite kolmanteen nappiin. Tarkastetaan tukeeko selain sijaintia. Jos tukee, tulostetaan konsolille, että sijainti on saatavilla, ja koordinaatit. Lisätään sijainnin tarkastus ja tulostukset eventListenerin sisään.
+
+      let nappi3 = document.getElementsByTagName("button")[2];
+      nappi3.addEventListener("click", function () {
+        if ("geolocation" in navigator) {
+          console.log("geolocation available");
+
+          navigator.geolocation.getCurrentPosition((position) => {
+            console.log(position.coords);
+            document.write(
+              position.coords.latitude,
+              " ",
+              position.coords.longitude
+            );
+          });
+        } else {
+          console.log("geolocation not available");
+        }
+      });
+
+      // Tehtävä 2: määritellään halutulle otsikolle ID, etsitään otsikko ID:n avulla. lisätään kuuntelijat.
+
+      let otsikko1 = document.getElementById("ex2");
+
+      otsikko1.addEventListener("mouseover", function () {
+        console.log("Stepped over my a mouse!");
+      });
+
+       otsikko1.addEventListener("mouseout", function () {
+        alert("Bye bye mouse!");
+      });
+
+      // Tehtävä 3.1 : haetaan tekstialue queryselectorilla (en tiedä mitä tarkoittaa käytännössä), lisätään kuuntelija, lisätään toiminnallisuudet (eli muuta teksti + taustaväri)
+      // 3.2 : en tajunnut minne tehtävänannon mukaan haluttiin painallusten lukumäärä. Konsoliin tulostetaan näkyviin sitä mukaa kun painalluksia tulee.
+      // 3.3 : ehtolauseella tarkastellaan, onko textarea tyhjä ja suoritetaan huomautus tarvittaessa
+
+      let vaihdaTeksti = document.querySelector("#textdata");
+      let painallustenLKM = 0;
+
+      vaihdaTeksti.addEventListener("focus", function () {
+        vaihdaTeksti.textContent = "Please fill in the form with proper data.";
+        vaihdaTeksti.style.background = "lightblue";
+      });
+
+      vaihdaTeksti.addEventListener("keydown", function () {
+        painallustenLKM++;
+        console.log(painallustenLKM);
+      });
+
+      let nappi4 = document.getElementsByTagName("button")[3];
+      nappi4.addEventListener("click", function () {
+        if (document.getElementById("textdata").value == "") {
+          alert("You must write something!");
+        }
+      });
+
+      // Tehtävä 4: haetaan ID:n perusteella div-elementti, lisätään mouseover-kuuntelija. Haetaan coords-id-h2, lisätään komento jolla muutetaan tuo h2-elementti näyttämään koordinaatit
+
+      let etsiAlue = document.getElementById("coordinates");
+      let koordsit = document.querySelector("#coords");
+
+      etsiAlue.addEventListener("mousemove", function () {
+        var x = event.clientX;
+        var y = event.clientY;
+
+        koordsit.innerText = x + ", " + y;
+      });
     </script>
   </body>
 </html>
