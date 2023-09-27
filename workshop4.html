@@ -125,7 +125,7 @@
     </ul>
 
     <p>Select a new car from the list.</p>
-    <select name="mySelect" id="mySelect" onchange="alert(value);">
+    <select name="mySelect" id="mySelect">
       <option value="BMW">BMW</option>
       <option value="Audi">Audi</option>
       <option value="Mercedes">Mercedes</option>
@@ -136,8 +136,6 @@
     <br />
     <img
       alt=""
-      onmouseover="document.getElementById('carimage').style.border='3px solid red';"
-      onmouseout="document.getElementById('carimage').style.border='0px';"
       style="left: 0px; opacity: 1"
       src="https://www.bmw.fi/content/dam/bmw/common/all-models/m-series/series-overview/bmw-m-series-seo-overview-ms-04.jpg"
       width="400"
@@ -153,29 +151,25 @@
         </p>
         <ol>
           <li>
-            <button onclick="changePosition()">Move!</button>Select the div with
-            an id &quot;carimage&quot; and move it 200px left and 500px down
+            <button>Move!</button>Select the div with an id &quot;carimage&quot;
+            and move it 200px left and 500px down
           </li>
           <li>
-            <button onclick="setInterval(function(){doMove();},1000); ">
-              Animate
-            </button>
+            <button>Animate</button>
             Write a funtion doMove() which will move the image across the
             screen, or even better: back and forth on the screen. The Interval
             required has already been added to the onclick -event of the list
             item.
           </li>
           <li>
-            <button onclick="setInterval(function(){fadeOut();},250);">
-              Fade out!
-            </button>
+            <button>Fade out!</button>
             Wite a function fadeOut() which will slowly decrease the opacity of
             the image from 1.0 to 0 making it fade out. The Interval required
             has already been added to the onclick -event of the list item
           </li>
           <li>
-            <button onclick="remove()">Disappear!</button>Finally, write
-            JavaScript which will remove the image from the page
+            <button>Disappear!</button>Finally, write JavaScript which will
+            remove the image from the page
           </li>
         </ol>
       </li>
@@ -241,13 +235,7 @@
       Salary:
       <input type="text" name="textfield3" id="textfield3" />
       <br />
-      <input
-        type="button"
-        onclick="insertRows()"
-        name="Insert"
-        id="Insert"
-        value="Insert"
-      />
+      <input type="button" name="Insert" id="Insert" value="Insert" />
     </p>
     <hr />
     <h2>Bonus exercises for the enthusiastics</h2>
@@ -290,14 +278,14 @@
       let button3 = document.getElementsByTagName("button")[2];
       button3.addEventListener("click", function () {
         let uusiTeksti1 = document.createElement("p");
-        uusiTeksti1.innerHTML = ` "<em> \"Lorem ipsum dolor sit amet, consectetuer 
-					adipiscing elit. Sed posuere interdum sem. Quisque ligula eros 
-					ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius 
-					diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et 
-					venenatis eget velit.\" </em>" <br>
-					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/1920px-Coca-Cola_logo.svg.png" 
-					style="width:20%; display:block; margin-left:auto; margin-right:auto;">
-					`;
+        uusiTeksti1.innerHTML = ` "<em> \"Lorem ipsum dolor sit amet, consectetuer
+            					adipiscing elit. Sed posuere interdum sem. Quisque ligula eros
+            					ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius
+            					diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et
+            					venenatis eget velit.\" </em>" <br>
+            					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/1920px-Coca-Cola_logo.svg.png"
+            					style="width:20%; display:block; margin-left:auto; margin-right:auto;">
+            					`;
 
         let etsiPara = document.getElementsByTagName("p")[3];
         etsiPara.after(uusiTeksti1);
@@ -319,7 +307,7 @@
         etsiId.style.display = "block";
       });
 
-	  // 2.3 Haetaan kolmas checkbox+lisätään kuuntelija. onchange eventin tapahtuessa etsitään kaikki elementit, joiden class on surprise. Loopataan kaikkien läpi muuttaen fonttikokoa
+      // 2.3 Haetaan kolmas checkbox+lisätään kuuntelija. onchange eventin tapahtuessa etsitään kaikki elementit, joiden class on surprise. Loopataan kaikkien läpi muuttaen fonttikokoa
 
       let valinta3 = document.getElementsByTagName("input")[2];
       valinta3.addEventListener("change", function () {
@@ -329,14 +317,132 @@
         }
       });
 
-	  // Tehtävä 3
+      // Tehtävä 3: etsitään valikko ja auton kuva. lisätään ensin kuuntelija valikolle ja toiminnallisuus valikon arvon vaihtuessa näyttämään kullekin arvolle määritelty alert ja kuva
+      // sitten lisätään kuuntelija mouseover ja mouseout ja niille toiminnallisuudet
 
-	  let autonKuva = document.getElementById("carimage");
-	  autonKuva.addEventListener("mouseover", function(){
-		
-	  });
+      let etsiBoksi = document.getElementById("mySelect");
+      let autonKuva = document.getElementById("carimage");
+      etsiBoksi.addEventListener("change", function () {
+        if (etsiBoksi.value == "Audi") {
+          alert(etsiBoksi.value);
+          autonKuva.src =
+            "https://mediaservice.audi.com/media/live/50900/fly1400x601n1/8yabdc/2023.png?wid=850";
+        } else if (etsiBoksi.value == "Mercedes") {
+          alert(etsiBoksi.value);
+          autonKuva.src =
+            "https://www.mercedes-benz.fi/content/finland/fi/passengercars/_jcr_content/root/responsivegrid/simple_teaser_115569/simple_teaser_item_c_1674112418.component.damq2.3385491449487.jpg/mercedes-benz-cle-coupe-c236-home-stage-3840x3840-05-2023.jpg";
+        } else if (etsiBoksi.value == "Volvo") {
+          alert(etsiBoksi.value);
+          autonKuva.src =
+            "https://www.volvocars.com/images/v/-/media/project/contentplatform/data/media/my24/car-images/ex90-bev-my24-responsive.jpg?h=600&iar=0";
+        } else {
+          alert(etsiBoksi.value);
+          autonKuva.src =
+            "https://www.bmw.fi/content/dam/bmw/common/all-models/m-series/series-overview/bmw-m-series-seo-overview-ms-04.jpg";
+        }
+      });
 
+      autonKuva.addEventListener("mouseover", function () {
+        autonKuva.style.border = "3px solid red";
+      });
+      autonKuva.addEventListener("mouseout", function () {
+        autonKuva.style.border = "0px";
+      });
 
+      // Tehtävä 4: tiedostossa ei ole div-elementtiä id:llä carimage, joten käytän img-elementtiä id:llä carimage, joka olikin jo etsitty edellisessä tehtävässä
+
+      let nappiMove = document.getElementsByTagName("button")[3];
+      nappiMove.addEventListener("click", function () {
+        autonKuva.style.marginLeft = "200px";
+        autonKuva.style.marginTop = "500px";
+      });
+
+      // 4.2 muutin interval-arvoa, jotta kuva liikkuisi nopeammin. muuttelin myös dir arvoa säätelemään kuinka nopeasti kuva liikkuu
+      // siirsin myös html-koodista javascriptin tänne, eli lisäsin napin haun + kuuntelijan.
+
+      let nappiAnimate = document.getElementsByTagName("button")[4];
+      nappiAnimate.addEventListener("click", function () {
+        setInterval(function () {
+          doMove();
+        }, 1);
+
+        let pos = 0;
+        let dir = 3;
+        let leveys = document.body.clientWidth - autonKuva.clientWidth;
+        function doMove() {
+          if (pos > leveys) dir = -3;
+          else if (pos < 0) dir = 3;
+          pos += dir;
+          autonKuva.style.left = pos + "px";
+        }
+      });
+
+      // 4.3 nappi, kuuntelija, javascript täällä. fadeoutin määrää ja nopeutta säädelty
+
+      let nappiFade = document.getElementsByTagName("button")[5];
+      nappiFade.addEventListener("click", function () {
+        setInterval(function () {
+          fadeOut();
+        }, 10);
+
+        function fadeOut() {
+          let opacity = autonKuva.style.opacity;
+          if (opacity > 0) {
+            opacity -= 0.005;
+            autonKuva.style.opacity = opacity;
+          }
+        }
+      });
+
+      // 4.4
+
+      let nappiPoista = document.getElementsByTagName("button")[6];
+      nappiPoista.addEventListener("click", function () {
+        autonKuva.parentNode.removeChild(autonKuva);
+      });
+
+      // Tehtävä 5: haetaan insert-idllä oleva nappi, lisätän click kuuntelija. haetaan taulukko, johon lisätään. määritellään uuden rowin ja cellien sijainnit
+      // haetaan input-lomakkeille käyttäjän syöttämät arvot ja lisätään ne aikaisemmin määriteltyjen solujen perusteella oikeaan sarakkeeseen
+      let nappiInsert = document.getElementById("Insert");
+
+      nappiInsert.addEventListener("click", function () {
+        let table = document.getElementById("data");
+        let row = table.insertRow(1);
+        let cellName = row.insertCell(0);
+        let cellPosition = row.insertCell(1);
+        let cellSalary = row.insertCell(2);
+
+        let getName = document.getElementById("textfield").value;
+        let getPosition = document.getElementById("textfield2").value;
+        let getSalary = document.getElementById("textfield3").value;
+
+        cellName.innerHTML = getName;
+        cellPosition.innerHTML = getPosition;
+        cellSalary.innerHTML = getSalary;
+      });
     </script>
   </body>
 </html>
+
+
+<!-- Koodi rikkoo muita sivulla olevia, joten en halua pitää siellä. Looppi ei kaikkien listojen kohalla pyöritä läpi koko listaa vaan esim ensimmäiset li-elementit?
+  Sain vaihdettua select-tekstin replace tekstiin, mutta en saa muotoiluja?
+
+      let ul = document.getElementsByTagName("ul");
+      for (let i = 0; i < ul.length; i++) {
+        let items = ul[i].getElementsByTagName("li");
+        for (let j = 0; j < items.length; j++) {
+          //  items[j].style.color = "red";
+          //  items[j].style.fontWeight = "bold";
+          //  items[j].innerHTML = "Replaced!";
+
+          if (document.body.innerHTML.includes("Select")) {
+            let vaihtuu = document.body.innerHTML.replace("Select", "<span id='vaihdettu'>Replaced!</span>");
+            let etsiVaihdettu = document.getElementById
+
+            document.body.innerHTML = vaihtuu;
+          } else {
+            console.log("ei löyvy");
+          }
+        }
+      } -->
