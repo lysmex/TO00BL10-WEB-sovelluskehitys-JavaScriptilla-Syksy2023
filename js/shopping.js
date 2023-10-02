@@ -1,6 +1,9 @@
-// Tehtävä 1 / 4
+// Tehtävä 1
 
 function tehtavaYksi(){
+
+  let lomakeEmail = document.querySelector('#email').value;
+  let lomakeComment = document.querySelector('#comment').value;
 
   if (lomakeEmail == "") {
     alert("Email is required!");
@@ -49,32 +52,32 @@ function tehtavaYksi(){
   }
 }
 
-let checkIfWantEmail = document.querySelector('#check_email');
-let checkIfWantCall = document.querySelector('#check_call');
-let checkIfWantSms = document.querySelector('#check_sms');
+function Piilota(){
 
-let findEmailInput = document.querySelector('#give_email');
-let findPhoneCall = document.querySelector('#give_call');
-let findPhoneSms = document.querySelector('#give_sms');
+let emailChecked = document.querySelector('#want_email');
+let emailProvide = document.querySelector('#contact_email');
+let callChecked = document.querySelector('#want_call');
+let callProvide = document.querySelector('#contact_call');
+let smsChecked = document.querySelector('#want_sms');
+let smsProvide = document.querySelector('#contact_sms');
 
-if (!checkIfWantEmail.checked){
-    console.log("ei email")
-        findEmailInput.style.display="none";
-} if (checkIfWantEmail.checked) { 
-    console.log("joo email")
-    findEmailInput.style.display="block";
+if (emailChecked.checked == false){
+emailProvide.style.display="none";
+} else {
+  emailProvide.style.display="block";
 }
 
-if (!checkIfWantCall.checked){
-        findPhoneCall.style.display="none";
-} if (checkIfWantCall.checked) {
-    findPhoneCall.style.display="block";
+if (callChecked.checked == false){
+callProvide.style.display="none";
+} else {
+  callProvide.style.display="block";
 }
 
-if (!checkIfWantSms.checked){
-        findPhoneSms.style.display="none";
-} if(checkIfWantSms.checked) {
-    findPhoneSms.style.display="block";}
+if (smsChecked.checked == false){
+smsProvide.style.display="none";
+} else {
+  smsProvide.style.display="block";
+} }
 
 // Tehtävä 2
 

@@ -46,37 +46,41 @@
     </p>
     <form onsubmit="return tehtavaYksi()">
       <div class="no-border">
-        <label>Email address:<br /> </label>
-        <input type="text" name="email" id="email" /><span id="virhe"></span>
+          <label>Email address:<br>
+              <input type="text" name="email" id="email">
+              &nbsp;<span id="virhe"></span>
+          </label>
       </div>
       <div class="no-border">
-        <label> Comment:<br /> </label>
-        <textarea name="comment" id="comment"></textarea>
-      </div> <span id="virhe2"></span>
+          <label>
+              Comment:<br>
+          <textarea name="comment" id="comment"></textarea>
+          &nbsp;<span id="virhe2"></span>
+        </label>
+      </div>
 
       <div class="no-border">
-          <input type="checkbox" id="check_email"/>
-          <label>I want to be contacted via email</label></div>
+        <label><input type="checkbox" id="want_email" onchange="Piilota()">
+        I want contact by email </label><br />
+        <label><input type="checkbox" id="want_call" onchange="Piilota()">
+        I want contact by phone call</label><br />
+        <label><input type="checkbox" id="want_sms" onchange="Piilota()">
+        I want contact by sms message
+        </label>
+      </div>
 
-        <div class="no-border">
-          <input type="checkbox" id="check_call"/>
-          <label>I want to be contacted via phone call</label></div>
+      <div class="no-border" id="contact_email" hidden>
+        <label>Provide email for contact: <input type="text"></textarea></label></div>
+      
+      <div class="no-border" id="contact_call" hidden>
+        <label>Provide phone number for contact call: <input type="text"></textarea></label></div>
 
-        <div class="no-border">
-          <input type="checkbox" id="check_sms"/>
-          <label>I want to be contacted via sms message</label></div>
+      <div class="no-border" id="contact_sms" hidden>
+        <label>Provide phone number for contact sms: <input type="text"></textarea></label></div>
 
-          <div class="no-border">
-            <label></label>
-            <input type="text" id="give_email">
-            <label></label>
-            <input type="text" id="give_call">
-            <label></label>
-            <input type="text" id="give_sms">
-          </div>
-
-      <input type="submit" value="Send" id="send" />
-    </form>
+      <br>
+      <input type="submit" value="Send">
+  </form>
 
     <hr />
     <h2>Exercise 2: Membership Calculator</h2>
